@@ -19,4 +19,4 @@ Run metrics:
 		Low: 0
 		Medium: 0
 		High: 0
-Files skipped (0):
+Files skipped (0): 
