@@ -2,11 +2,12 @@
 Module for generating a random array.
 """
 
-import subprocess
+import random
 
-def random_array(arr):
-    """Generates a random array using the 'shuf' command."""
-    for i, _ in enumerate(arr):
-        shuffled_num = subprocess.run(["shuf", "-i1-20", "-n1"], capture_output=True, check=True)
-        arr[i] = int(shuffled_num.stdout)
-    return arr
+def random_array(size, min_val=1, max_val=20):
+    """Generates a list of random integers within a range."""
+    return [random.randint(min_val, max_val) for _ in range(size)]
+
+# Example usage
+arr = random_array(20)
+print(arr)
