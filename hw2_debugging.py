@@ -2,36 +2,42 @@ import rand
 import os
 
 
-def mergeSort(arr):
+def mergesort(arr):
     if (len(arr) == 1):
         return arr
 
     half = len(arr)//2
 
-    return recombine(mergeSort(arr[:half]), mergeSort(arr[half:]))
+    return recombine(mergesort(arr[:half]), mergesort(arr[half:]))
 
 def recombine(leftArr, rightArr):
-    leftIndex =  0
+    leftIndex = 0
     rightIndex = 0
-    mergeArr = [None] * (len(leftArr) + len(rightArr))
-    while leftIndex < len(leftArr) and rightIndex < len(rightArr):
-        if leftArr[leftIndex] < rightArr[rightIndex]:
-            rightIndex += 1
-            mergeArr[leftIndex + rightIndex] = leftArr[leftIndex]
-        else:
-            leftIndex += 1
-            mergeArr[leftIndex + rightIndex] = rightArr[rightIndex]
+    mergeArr = []
 
-    for i in range(rightIndex, len(rightArr)):
-        mergeArr[leftIndex + rightIndex] = rightArr[i]
-    
-    for i in range(leftIndex, len(leftArr)):
-        mergeArr[leftIndex + rightIndex] = leftArr[i]
+    # Merge the two arrays as long as both have remaining elements
+    while leftIndex < len(leftArr) and rightIndex < len(rightArr):
+        if leftArr[leftIndex] <= rightArr[rightIndex]:
+            mergeArr.append(leftArr[leftIndex])
+            leftIndex += 1
+        else:
+            mergeArr.append(rightArr[rightIndex])
+            rightIndex += 1
+
+    # If leftArr still has elements, add them
+    while leftIndex < len(leftArr):
+        mergeArr.append(leftArr[leftIndex])
+        leftIndex += 1
+
+    # If rightArr still has elements, add them
+    while rightIndex < len(rightArr):
+        mergeArr.append(rightArr[rightIndex])
+        rightIndex += 1
 
     return mergeArr
 
 arr = rand.random_array([None] * 20)
-arr_out = mergeSort(arr)
+arr_out = mergesort(arr)
 
 print(arr_out)
 
@@ -44,7 +50,7 @@ def authenticate_user():
     else:
         print("Access Denied!")
 
-authenticate_user()
+
 
 
 def delete_file():
@@ -58,13 +64,11 @@ def delete_file():
     else:
         print("File not found.")
 
-delete_file()
 
 def infinite_recursion(n):
     print(n)
     return infinite_recursion(n + 1)  
 
-infinite_recursion(1)
 
 def bubble_sort(arr):
     n = len(arr)
@@ -82,10 +86,19 @@ def divide_numbers():
     b = int(input("Enter denominator: "))
     print(a / b)  
 
-divide_numbers()
+
 
 def unused_variables():
     x = 42  
     y = 100 
 
-unused_variables()
+
+if __name__ == '__main__':
+    # Only run these if the file is executed directly,
+    # NOT if it's being imported by pytest or anything else.
+    authenticate_user()
+    delete_file()
+    infinite_recursion(1)
+    unused_variables()
+    divide_numbers()
+    delete_file()
