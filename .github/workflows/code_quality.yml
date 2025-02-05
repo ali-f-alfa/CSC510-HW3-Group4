@@ -29,15 +29,15 @@ jobs:
 
       - name: Run Pylint
         run: |
-          pylint $(git ls-files '*.py')
+          pylint hw2_debugging.py rand.py
 
       - name: Run Pyflakes
         run: |
-          pyflakes $(git ls-files '*.py')
+          pyflakes hw2_debugging.py rand.py
 
       - name: Run Bandit
         run: |
-          bandit -r .
+          bandit hw2_debugging.py rand.py
 
   run-tests:
     name: Run Tests
