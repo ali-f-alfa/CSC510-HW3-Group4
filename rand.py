@@ -3,7 +3,6 @@ Module for generating a random array.
 """
 
 import secrets
-import random
 
 def random_array(size=None, arr=None, min_val=1, max_val=20, secure=False):
     """Generates a random array with specified parameters."""

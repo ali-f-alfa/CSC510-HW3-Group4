@@ -2,7 +2,6 @@
 Module for sorting algorithms.
 """
 
-import random
 import os
 import secrets
 
