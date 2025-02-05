@@ -1,0 +1,4 @@
+hw2_debugging.py:2:1: redefinition of unused 'rand' from line 1
+hw2_debugging.py:4:1: 'os' imported but unused
+hw2_debugging.py:42:7: undefined name 'undefined'
+rand.py:3:1: 'os' imported but unused
