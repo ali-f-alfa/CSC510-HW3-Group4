@@ -4,6 +4,7 @@ Module for sorting algorithms.
 
 import random
 import os
+import secrets
 
 def merge_sort(arr):
     """Sorts an array using the merge sort algorithm."""
@@ -75,7 +76,7 @@ def main():
     divide_numbers()
 
     # Generate a random array of 20 elements for sorting
-    arr = [random.randint(0, 100) for _ in range(20)]
+    arr = [secrets.randbelow(0, 100) for _ in range(20)]
     print("Unsorted array:", arr)
     print("Sorted with merge sort:", merge_sort(arr))
     print("Sorted with bubble sort:", bubble_sort(arr))
