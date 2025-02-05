@@ -3,32 +3,34 @@ Module for merge sort implementation.
 """
 import random
 
-def merge_sort(array):
+def merge_sort(arr):
     """Sorts an array using the merge sort algorithm."""
-    if len(array) <= 1:
-        return array
-    
-    half = len(array) // 2
-    return recombine(merge_sort(array[:half]), merge_sort(array[half:]))
+    if len(arr) <= 1:
+        return arr
 
-def recombine(left_array, right_array):
-    """Recombines two sorted arrays into a single sorted array."""
+    half = len(arr) // 2
+    left = merge_sort(arr[:half])
+    right = merge_sort(arr[half:])
+
+    return recombine(left, right)
+
+def recombine(left, right):
+    """Merges two sorted arrays into a single sorted array."""
     left_index, right_index = 0, 0
-    merge_array = []
+    merged = []
 
-    while left_index < len(left_array) and right_index < len(right_array):
-        if left_array[left_index] < right_array[right_index]:
-            merge_array.append(left_array[left_index])
+    while left_index < len(left) and right_index < len(right):
+        if left[left_index] < right[right_index]:
+            merged.append(left[left_index])
             left_index += 1
         else:
-            merge_array.append(right_array[right_index])
+            merged.append(right[right_index])
             right_index += 1
 
-    # Append any remaining elements
-    merge_array.extend(left_array[left_index:])
-    merge_array.extend(right_array[right_index:])
-
-    return merge_array
+    merged.extend(left[left_index:])
+    merged.extend(right[right_index:])
+    
+    return merged
 
 # Generate a random array of 20 elements
 arr = [random.randint(0, 100) for _ in range(20)]
